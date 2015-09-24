@@ -15,7 +15,7 @@ usage() {
     -p|--proxy SPEC           : the specification for a proxy
     -h|--help                 : display this usage menu
 EOF
-  [ -n "$@" ] || {
+  [ -n "$@" ] && {
     echo ""
     echo "[error] $@";
     exit 1;
