@@ -1,5 +1,7 @@
 #### **Nginx TLS Sidekick**
 
+[![Build Status](https://travis-ci.org/UKHomeOffice/docker-nginx-tls.svg?branch=master)](https://travis-ci.org/UKHomeOffice/docker-nginx-tls)
+
 A small utility container which is responsible to rotating the certificates on a nginx proxy.
 
 ```shell
