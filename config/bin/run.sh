@@ -70,6 +70,10 @@ nginx_config() {
     local_port=${BASH_REMATCH[3]}
     certificate=${BASH_REMATCH[4]}
     filename="${NGINX_CONFD}/${certificate}.conf"
+    protocol="http"
+
+    # step: attempt to guess the protocol
+    [[ "${local_port}" =~ ^443$ ]] && protocol="https"
 
     # step: check the certificate files are there
     [ -e "${CERTS_DIR}/${certificate}.crt" ] || {
@@ -91,7 +95,7 @@ server {
   ssl_certificate_key  ${CERTS_DIR}/${certificate}.key;
 
   location / {
-    proxy_pass http://${local_address}:${local_port};
+    proxy_pass ${protocol}://${local_address}:${local_port};
   }
 }
 EOF
